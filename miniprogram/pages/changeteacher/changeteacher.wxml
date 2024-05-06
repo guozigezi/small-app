@@ -1,0 +1,15 @@
+<view class="item">
+    <view class="tip">编辑姓名</view>
+    <input value="{{name}}" bindinput="getName" />
+</view>
+<view class="line"></view>
+
+<view class="item" >
+    <view class="tip">编辑工号</view>
+    <input value="{{number}}" bindinput="getID" />
+</view>
+<view class="item" >
+    <view class="tip">修改密码</view>
+    <input value="{{password}}" bindinput="getpassword" />
+</view>
+<button class="btn" bindtap="submit">提交修改</button>

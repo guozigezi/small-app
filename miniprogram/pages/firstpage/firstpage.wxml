@@ -1,0 +1,29 @@
+<!--pages/firstpage/firstpage.wxml-->
+<view wx:if="{{current==0}}">
+  <view class="container">  
+    <view class="button-container">
+  <button class="btn"  bindtap="teacher">教师端登录</button>  
+  <button class="btn" bindtap="gotostudent">学生端登录/注册</button>  
+  </view>
+</view>
+</view>
+<view wx:elif="{{current==1}}">
+  <view class="container">  
+  <view class="form-container">  
+    <view class="input-item">  
+      <input type="text" placeholder="工号" bindinput="bindinputdata"  />  
+    </view>  
+    <view class="input-item">  
+      <input type="password" placeholder="密码" bindinput="bindinputpassword"  />  
+    </view>  
+    <button class="login-btn" bindtap="logteacher">登录</button> 
+    <button class="login-btn" bindtap="return">返回首页</button> 
+  </view>   
+</view>
+</view>
+<view wx:else="{{current==2}}">
+<input bindinput="bindinputdata" placeholder="学号"/>
+<input bindinput="bindinputpassword" password type="text" placeholder="密码"/>
+<button bindtap="return">返回首页</button>
+<button bindtap="logstudent">登录</button>
+</view>

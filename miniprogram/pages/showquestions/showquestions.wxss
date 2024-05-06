@@ -1,0 +1,54 @@
+/* pages/showquestions/showquestions.wxss */
+.login_root {
+  display: flex;
+  padding: 50rpx;
+  align-items: center;
+  background: #2E8B57;
+}
+.name {
+  font-size: 40rpx;
+  color: white;
+}
+
+.tuichu {
+  font-size: 32rpx;
+  color: FFFFFF;
+  margin-top: 10rpx;
+}
+.my_item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20rpx;
+  background: white;
+  border-bottom: 1px solid gainsboro;
+}
+.right_arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  padding: 3px;
+  position: absolute;
+  right: 15px;
+  /* margin-left: 66%; */
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.font30{
+  font-size: 30rpx;
+}
+
+.color3{
+  color: #333;
+}
+
+.color6{
+  color: #666;
+}
+
+.timeIcon{
+  color:#666;
+  font-size:18rpx;
+  margin-left: 5rpx;
+}
+

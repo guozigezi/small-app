@@ -1,0 +1,7 @@
+<view wx:for="{{title}}">
+{{index+1}}.{{item}}({{answeer[index]+1}})
+<radio-group>
+<view wx:for="{{record[index]}}"><text> ({{index+1}}){{item}}</text></view>
+</radio-group>
+</view>
+<view>得分：{{score}}</view>

@@ -1,0 +1,2 @@
+<!--pages/shangchuan/shangchuan.wxml-->
+<button bind:tap="onAddSurveyExcel">点击上传</button>

@@ -1,0 +1,85 @@
+.container {  
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+  justify-content: center;  
+  height: 100vh; /* 设置容器高度为视口高度 */  
+  background-color: #1cbbb4; /* 青色背景 */  
+  padding: 20px; /* 内边距 */  
+}  
+  
+.button-container { /* 按钮容器样式 */  
+  display: flex;  
+  flex-direction: column; /* 垂直排列按钮 */  
+  align-items: center;  
+  justify-content: center;  
+  width: 100%; /* 容器宽度 */  
+  background-color: #ffffff; /* 设置与背景色不同的颜色 */  
+  border-radius: 10px; /* 可选：添加圆角 */  
+  padding: 10px; /* 内边距 */  
+  margin-bottom: 20px; /* 与页面底部间距 */  
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 可选：添加阴影效果 */  
+}  
+  
+.btn {  
+  margin-bottom: 10px; /* 按钮之间的间距 */  
+  padding: 10px 20px; /* 内边距 */  
+  border-radius: 5px; /* 圆角 */  
+  background-color: #0081ff; /* 与容器背景色相同或不同的按钮背景色 */  
+  color: #333; /* 按钮文字颜色 */  
+  font-size: 16px; /* 字体大小 */  
+  transition: background-color 0.3s ease; /* 添加过渡效果 */  
+}  
+  
+.btn:active {  
+  background-color: #90c0e0; /* 点击时的背景色 */  
+}
+.container {  
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+  justify-content: center;  
+  height: 100vh;  
+  /* 加入蓝绿色背景 */  
+  background-color: #009688; /* 蓝绿色背景 */  
+}  
+  
+.form-container {  
+  width: 100%;  
+  max-width: 400px;  
+  background-color: #fff; /* 白色背景，与蓝绿色形成对比 */  
+  border-radius: 10px;  
+  padding: 30px;  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+}  
+  
+.input-item {  
+  margin-bottom: 20px;  
+}  
+  
+.input-item input {  
+  width: 90%;  
+  padding: 10px;  
+  border: 1px solid #ccc;  
+  border-radius: 5px;  
+  font-size: 16px;  
+}  
+  
+.login-btn {  
+  width: 100%;  
+  /* 将按钮背景色设为蓝绿色 */  
+  background-color: #009688;  
+  color: #fff; /* 白色文字，与蓝绿色背景形成对比 */  
+  border: none;  
+  border-radius: 5px;  
+  padding: 10px;  
+  font-size: 18px;  
+}  
+  
+.register-link {  
+  margin-top: 20px;  
+  color: #fdfdfd; /* 蓝绿色文字链接 */  
+  text-align: center;  
+  text-decoration: none;  
+  font-size: 14px;  
+}

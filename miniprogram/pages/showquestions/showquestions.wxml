@@ -1,0 +1,33 @@
+<view wx:if="{{current==0}}">
+<view wx:for="{{title}}">
+<view class='my_item' bindtap="question" data-text='{{index}}'>
+        <text>{{item}}</text>
+        <view class='right_arrow' />
+</view>
+</view>
+</view>
+<view wx:else>
+<view>注意事项：{{detail[number-1]}}</view>
+<view wx:for="{{currentquestions}}">
+  第{{index+1}}题<view wx:for="{{item}}">{{item}}</view>
+</view>
+<button bind:tap="return">返回</button>
+<button bind:tap="remove">删除</button>
+<button bind:tap="publish">发布</button>
+<view>设置截止时间
+  <picker mode="date" header-text="选择时间"  value="{{limitdate}}" bindchange="bindDateChange">
+  <view class="font30">
+    <text class="color3">截止日期：</text>
+    <text class="color6">{{limitdate}}</text>
+    <text class="timeIcon">▼</text>
+  </view>
+</picker>
+<picker mode="time" header-text="选择时间"  value="{{limittime}}" bindchange="bindtimeChange">
+  <view class="font30">
+    <text class="color3">截止时间：</text>
+    <text class="color6">{{limittime}}</text>
+    <text class="timeIcon">▼</text>
+  </view>
+</picker>
+</view>
+</view>

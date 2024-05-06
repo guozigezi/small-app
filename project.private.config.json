@@ -1,0 +1,93 @@
+{
+  "setting": {
+    "compileHotReLoad": true,
+    "urlCheck": false
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/teacher/teacher",
+          "pathName": "pages/teacher/teacher",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/checkstudent/checkstudent",
+          "pathName": "pages/checkstudent/checkstudent",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/dati1/dati1",
+          "pathName": "pages/dati1/dati1",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/teacher",
+          "pathName": "pages/teacher/teacher",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/shangchuan/shangchuan",
+          "pathName": "pages/shangchuan/shangchuan",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/me2/me2",
+          "pathName": "pages/me2/me2",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/firstpage/firstpage",
+          "pathName": "pages/firstpage/firstpage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/firstpage/firstpage",
+          "pathName": "pages/firstpage/firstpage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "首页-快速开始",
+          "pathName": "pages/index/index",
+          "query": ""
+        },
+        {
+          "name": "商品列表",
+          "pathName": "pages/goods-list/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "云开发示例",
+          "pathName": "pages/examples/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "个人中心",
+          "pathName": "pages/user-center/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "projectname": "MBTI%E7%AD%94%E9%A2%98%E5%B0%8F%E7%A8%8B%E5%BA%8F"
+}

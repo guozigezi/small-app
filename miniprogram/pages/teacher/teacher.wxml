@@ -1,0 +1,29 @@
+<!--pages/teacher/teacher.wxml-->
+<view class="login_root" >
+    <view>
+        <view class="name">{{teacher.name}}老师</view>
+        <view class="tuichu" bindtap="tuichu">退出登录</view>
+    </view>
+</view>
+<view class='my_item' bindtap="gotochange">
+        <text>修改资料</text>
+        <view class='right_arrow' />
+</view>
+<view class='my_item' bindtap="addform">
+        <text>添加题目</text>
+        <view class='right_arrow' />
+</view>
+<view class='my_item' bindtap="showquestions">
+        <text>查看题目</text>
+        <view class='right_arrow' />
+</view>
+<view class='my_item' bindtap="checkstudent">
+        <text>查看学生作答</text>
+        <view class='right_arrow' />
+        
+</view>
+<view class='my_item' bindtap="checkstudentname">
+        <text>查看学生</text>
+        <view class='right_arrow' />
+        
+</view>

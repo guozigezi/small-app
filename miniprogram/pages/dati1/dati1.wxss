@@ -1,0 +1,10 @@
+.continer{
+  margin: 80rpx auto;
+  width: 600rpx;
+  height: 80rpx;
+  border: 1px solid silver;
+}
+.text{
+
+  text-align: center;
+  }

@@ -1,0 +1,6 @@
+<view wx:for="{{name}}">
+  <view class='my_item' bindtap="showquestions">
+        <text>{{item}}</text>
+        <text>{{id[index]}}</text>
+</view>
+</view>
