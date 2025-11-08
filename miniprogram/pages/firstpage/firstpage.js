@@ -10,10 +10,10 @@ animationData1: {}, // 按钮一的动画数据
 animationData2: {}, // 按钮二的动画数据  
   },
   async onLoad() {
-    let count= wx.cloud.database().collection('students').count();
-    let number=(await count).total
-    console.log(number)
-    for(var i=0;i<=number;i+=20)
+   // let count= wx.cloud.database().collection('students').count();
+   // let number=(await count).total
+   // console.log(number)
+   /* for(var i=0;i<=number;i+=20)
     {
       var list=[];
     wx.cloud.database().collection('students').skip(i).get()
@@ -24,7 +24,7 @@ animationData2: {}, // 按钮二的动画数据
         students:list
       })
     })
-  }
+  }*/
     wx.cloud.database().collection('teachers').get()
     .then(res1=>{
       console.log('老师',res1)
@@ -34,17 +34,9 @@ animationData2: {}, // 按钮二的动画数据
       })
   },
 teacher(){
-  var animation = wx.createAnimation({  
-    duration: 300, // 动画持续时间  
-    timingFunction: 'ease', // 定义动画的效果  
-  });  
-  this.animation = animation;  
-  animation.scale(0.9).step(); // 先缩放到0.9倍再结束动画  
-  this.setData({animationData1: animation.export()}); // 导出动画数据传递给视图层  
-  // 其他逻辑...  
-this.setData({
-  current:1
-})
+  wx.navigateTo({
+    url: '/pages/teacherlog/teaxherlog',
+  })
 },
 logteacher()
 {
@@ -175,5 +167,18 @@ register(){
   wx.navigateTo({
     url: '/pages/registerno/registerno',
   })
+},
+onShareAppMessage: function() {
+  return {
+    title: '测试小屋更新了，还不过来看看？', // 分享的标题
+    imageUrl: 'https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E7%88%B1%E5%9B%A0%E6%96%AF%E5%9D%A6.jpg?sign=f570945f5d54f8a831c63f5ec42d1316&t=1744626709', 
+    path: '/pages/firstpage/firstpage', // 分享的页面路径
+    success: function(res) {
+      console.log('分享成功', res);
+    },
+    fail: function(err) {
+      console.log('分享失败', err);
+    }
+  };
 }
 })

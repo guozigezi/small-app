@@ -1,10 +1,21 @@
 
 const db = wx.cloud.database()
 Page({
+  phone(e){
+
+this.setData({
+  phone:e.detail.value
+})
+  },
+  password(e){
+
+  this.setData({
+  password:e.detail.value
+  })
+  },
     // 登陆功能
-    create_login(e) {
-        let user = e.detail.value
-        console.log('user', user)
+    create_login() {
+        let user = {phone:this.data.phone,password:this.data.password}
         if (!user.phone) {
             wx.showToast({
                 icon: 'none',

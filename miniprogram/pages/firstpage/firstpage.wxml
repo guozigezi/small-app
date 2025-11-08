@@ -1,29 +1,46 @@
 <!--pages/firstpage/firstpage.wxml-->
 <view wx:if="{{current==0}}">
-  <view class="container">  
-    <view class="button-container">
-  <button class="btn"  bindtap="teacher">教师端登录</button>  
-  <button class="btn" bindtap="gotostudent">学生端登录/注册</button>  
-  </view>
+
+  <view class="container">
+<view class="child-container1" bind:tap="teacher">
+  <view   >
+  <image class="tuan" src="/pages/images/老师.png" mode="aspectFill" /> 
+  </view>  
+ <text class="text">教师端登录</text>
+</view>
+<view class="child-container2" bind:tap="gotostudent">
+  <view >
+    <image class="tuan" src="/pages/images/学生.png" mode="aspectFill"/>  
+  </view>  
+  <text class="text">学生端登录</text>
 </view>
 </view>
+</view>
+
 <view wx:elif="{{current==1}}">
-  <view class="container">  
-  <view class="form-container">  
-    <view class="input-item">  
-      <input type="text" placeholder="工号" bindinput="bindinputdata"  />  
-    </view>  
-    <view class="input-item">  
-      <input type="password" placeholder="密码" bindinput="bindinputpassword"  />  
-    </view>  
-    <button class="login-btn" bindtap="logteacher">登录</button> 
-    <button class="login-btn" bindtap="return">返回首页</button> 
-  </view>   
+  <view class="page-container">  
+  <view class="image-container">  
+    <image src="/pages/images/教师登录改.png" mode="aspectFit" class="full-image" />  
+  </view>  
+  <view class="white-container">  
+    <!-- 这里放置你的内容 -->  
+    <text>这是白色背景的容器</text>  
+  </view>  
 </view>
 </view>
+
+
+
+
 <view wx:else="{{current==2}}">
 <input bindinput="bindinputdata" placeholder="学号"/>
 <input bindinput="bindinputpassword" password type="text" placeholder="密码"/>
+<view class="button-group">
 <button bindtap="return">返回首页</button>
 <button bindtap="logstudent">登录</button>
 </view>
+</view>
+
+
+
+

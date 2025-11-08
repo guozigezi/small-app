@@ -7,46 +7,129 @@ Page({
         },
         content: [],
         px: [],
-        pxopen: false,
-        pxopen1: false,
-        pxshow: false,
-        pxshow1: false,
-        active:true,
-        active1:true,
         imgUrl: "../../images/down.png",
         wenjuan:[],
-        detail:[]
+        detail:[],
+        target:0,
+        record:[]
     },
-onLoad(){
+ async onLoad(){
   this.setData({
     active:true
   })
 var user = wx.getStorageSync('user2')
-        console.log('me---', user)
         if (user && user.name) {
             this.setData({
                 userInfo: user,
             })
         }
-    db.collection('public').get().then(res=>{
-    console.log(1)
+   await db.collection('public').get().then(res=>{
+    
       let forms=res.data
       for(var i=0;i<res.data.length;i++)
       {
         var onwenjuan='wenjuan['+i+']'
         var ondetail='detail['+i+']'
         var onquestions='questions['+i+']'
+        var onkinds='kinds['+i+']'
+        var onkind='kind['+i+']'
+        var onjudgekind='judgekind['+i+']'
+        var onjudgetext='judgetext['+i+']'
         this.setData({
           [onwenjuan]:forms[i].问卷,
           [ondetail]:res.data[i].详情,
-          [onquestions]:forms[i].题目
+          [onquestions]:forms[i].题目,
+          [onkinds]:forms[i].分类,
+          [onkind]:forms[i].每道题所属种类,
+          [onjudgetext]:forms[i].评价,
+          [onjudgekind]:forms[i].量表
         })
+        
       }
     })
-    
+    db.collection('record').where({
+      姓名:this.data.userInfo.name
+    }).get().then(res=>{
+      console.log(res)
+      for(var i=0;i<res.data.length;i++){
+        var onrecord='record['+i+']'
+        var onid='id['+i+']'
+        this.setData({
+          [onrecord]:res.data[i].问卷,
+          [onid]:res.data[i]._id
+        })
+      }
+      
+    //   for(var j=0;j<this.data.record.length;j++){
+    //   for(var i=0;i<this.data.wenjuan.length;i++){
+    //     if(this.data.wenjuan[i]==this.data.record[j]){
+    //       console.log('shanchu')
+    //       this.data.wenjuan.splice(i,1)
+    //       this.data.questions.splice(i,1)
+    //       this.data.kind.splice(i,1)
+    //       this.data.kinds.splice(i,1)
+    //       this.data.judgekind.splice(i,1)
+    //       this.data.judgetext.splice(i,1)
+    //       this.setData({
+    //         wenjuan:this.data.wenjuan,
+    //         questions:this.data.questions,
+    //         kind:this.data.kind,
+    //         kinds:this.data.kinds,
+    //         judgekind:this.data.judgekind,
+    //         judgetext:this.data.judgetext
+    //       })
+    //     }
+    //   }
+    // }
+  
+    })
 },
-onShow(){
-this.onLoad()
+ onShow(){
+  this.setData({
+    active:true
+  })
+var user = wx.getStorageSync('user2')
+        if (user && user.name) {
+            this.setData({
+                userInfo: user,
+            })
+        }
+        
+   
+    db.collection('record').where({
+      姓名:this.data.userInfo.name
+    }).get().then(res=>{
+      
+      for(var i=0;i<res.data.length;i++){
+        var onrecord='record['+i+']'
+        this.setData({
+          [onrecord]:res.data[i].问卷
+        })
+      }
+      
+    //   for(var j=0;j<this.data.record.length;j++){
+    //   for(var i=0;i<this.data.wenjuan.length;i++){
+    //     if(this.data.wenjuan[i]==this.data.record[j]){
+    //       console.log('删除执行')
+    //       this.data.wenjuan.splice(i,1)
+    //       this.data.questions.splice(i,1)
+    //       this.data.kind.splice(i,1)
+    //       this.data.kinds.splice(i,1)
+    //       this.data.judgekind.splice(i,1)
+    //       this.data.judgetext.splice(i,1)
+    //       this.setData({
+    //         wenjuan:this.data.wenjuan,
+    //         questions:this.data.questions,
+    //         kind:this.data.kind,
+    //         kinds:this.data.kinds,
+    //         judgekind:this.data.judgekind,
+    //         judgetext:this.data.judgetext
+    //       })
+    //     }
+    //   }
+    // }
+  
+    })
 },
 delete(){
 console.log(this.data.wenjuan)
@@ -65,69 +148,23 @@ for(var i=0;i<2;i++){
 }
 },
 listpx: function(e) {
-  if (this.data.pxopen) {
-      this.setData({
-          pxopen: false,
-          pxshow: false,
-          active: true,
-          imgUrl: "../../images/1.png"
-      })
-  } else {
-      this.setData({
-          content: this.data.px,
-          pxopen: true,
-          pxshow: false,
-          active:false,
-          imgUrl: "../../images/2.jpg"
-      })
-  }
-  db.collection('record').where({
-    姓名:this.data.userInfo.name
-  }).get().then(res=>{
-    console.log(2)
-    for(var i=0;i<res.data.length;i++){
-      var onrecord='record['+i+']'
-      this.setData({
-        [onrecord]:res.data[i].问卷
-      })
-    }
-    console.log(3)
-    for(var j=0;j<this.data.record.length;j++){
-    for(var i=0;i<this.data.wenjuan.length;i++){
-      if(this.data.wenjuan[i]==this.data.record[j]){
-        console.log('shanchu')
-        this.data.wenjuan.splice(i,1)
-        this.data.questions.splice(i,1)
-        this.setData({
-          wenjuan:this.data.wenjuan,
-          questions:this.data.questions
-        })
-      }
-    }
-  }
-
-  })
+let a=e.currentTarget.dataset.text
+this.setData({
+  target:a
+})
 },
 listpx1: function(e) {
-  if (this.data.pxopen1) {
-      this.setData({
-          pxopen1: false,
-          pxshow1: false,
-          active1: true,
-          imgUrl: "../../images/1.png"
-      })
-  } else {
-      this.setData({
-          content: this.data.px,
-          pxopen1: true,
-          pxshow1: false,
-          active1:false,
-          imgUrl: "../../images/2.jpg"
-      })
-  }
- 
+  let a=e.currentTarget.dataset.text
+this.setData({
+  target:a
+})
 },
-    login() {
+fanhui(){
+this.setData({
+  target:0
+})
+},
+login() {
         wx.navigateTo({
             url: '/pages/login/login',
         })
@@ -145,19 +182,12 @@ listpx1: function(e) {
             url: '/pages/change/change',
         })
     },
-    onShow() {
-        var user = wx.getStorageSync('user2')
-        console.log('me---', user)
-        if (user && user.name) {
-            this.setData({
-                userInfo: user,
-            })
-        }
-    },
   gotodati(e){
-    let a=e.currentTarget.dataset.text
+    console.log(e)
+    let a=Number(e.currentTarget.dataset.text)
+    console.log(a,"第几个")
     let infor=this.data.userInfo
-    let message=[this.data.wenjuan[a],this.data.questions[a],infor.name,infor.phone]
+    let message=[this.data.wenjuan[a],this.data.questions[a],infor.name,infor.phone,this.data.kinds[a],this.data.kind[a],this.data.judgekind[a],this.data.judgetext[a],this.data.userInfo.avatarUrl]
     wx.setStorageSync('question',message)
     wx.navigateTo({
       url: '/pages/dati1/dati1',
@@ -167,7 +197,7 @@ listpx1: function(e) {
   {
     let a=e.currentTarget.dataset.text
 
-    wx.setStorageSync('userrecord', [this.data.userInfo.name,this.data.record[a]])
+    wx.setStorageSync('userrecord', [this.data.userInfo.name,this.data.id[a],this.data.userInfo.avatarUrl])
     wx.navigateTo({
       url: '/pages/studentcheck/studentcheck',
     })

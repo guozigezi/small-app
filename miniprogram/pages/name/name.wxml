@@ -1,6 +1,9 @@
-<view wx:for="{{name}}">
-  <view class='my_item' bindtap="showquestions">
-        <text>{{item}}</text>
-        <text>{{id[index]}}</text>
+<view class="top">学生姓名</view>
+<scroll-view class="kuang" scroll-y="true">
+<view wx:for="{{name}}"  >
+  <view class='kuang1' >
+        <text class="name">{{item}}</text>
+        <text class="name">{{id[index]}}</text>
 </view>
 </view>
+</scroll-view> 

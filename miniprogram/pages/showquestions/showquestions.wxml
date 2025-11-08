@@ -1,20 +1,26 @@
-<view wx:if="{{current==0}}">
-<view wx:for="{{title}}">
-<view class='my_item' bindtap="question" data-text='{{index}}'>
-        <text>{{item}}</text>
-        <view class='right_arrow' />
-</view>
-</view>
-</view>
-<view wx:else>
-<view>注意事项：{{detail[number-1]}}</view>
+<scroll-view class="sheet" scroll-y="true">
+<view ><text class="color3">注意事项：</text>{{detail[number]}}</view>
 <view wx:for="{{currentquestions}}">
-  第{{index+1}}题<view wx:for="{{item}}">{{item}}</view>
+<view wx:if="{{kinds[kind[index]-1]}}" class="title">
+  第{{index+1}}题——{{kinds[kind[index]-1]}}
 </view>
-<button bind:tap="return">返回</button>
-<button bind:tap="remove">删除</button>
-<button bind:tap="publish">发布</button>
-<view>设置截止时间
+<view wx:else class="error">第{{index+1}}题——未检测到题型</view>
+<view>
+  {{item[0]}}
+  <view wx:if="{{item[1].length!=1}}">
+    <view wx:for="{{item[1]}}">
+     {{index+1}}.{{item[0]}}——{{item[1]}}分
+    </view>
+    </view>
+    <view wx:else>
+      <view wx:for="{{item[1]}}">
+     填空题：{{item[0]}}--{{item[1]}}分
+    </view>
+    </view>
+ </view>
+</view>
+
+<view class="choosetime">设置截止时间
   <picker mode="date" header-text="选择时间"  value="{{limitdate}}" bindchange="bindDateChange">
   <view class="font30">
     <text class="color3">截止日期：</text>
@@ -30,4 +36,24 @@
   </view>
 </picker>
 </view>
+<view class="type_buttons">
+
+<view class="typr_button" bind:tap="settype1" data-index="1">MBTI测试</view>
+<view class="typr_button" bind:tap="settype1" data-index="2">卡特尔16人格</view>
+<view class="typr_button" bind:tap="settype1" data-index="3">霍兰德职业兴趣</view>
+<view class="typr_button" bind:tap="settype1" data-index="4">LPC测试</view>
+<view class="typr_button" bind:tap="settype1" data-index="5">大五人格</view>
+<view class="typr_button" bind:tap="settype1" data-index="6">气质类型</view>
+<view class="typr_button" bind:tap="settype1" data-index="7">AB型人格</view>
+
 </view>
+<view class="submmit-container">
+<view class="submit-button" hover-class="hover-submmit">
+<view class="fanhui" bind:tap="remove" ><text class="remove">删除</text></view>
+</view>
+<view class="submit-button" hover-class="hover-submmit">
+  <view class="fanhui" bind:tap="publish"><text class="publish">发布</text></view>
+</view>
+</view>
+
+</scroll-view>

@@ -1,16 +1,20 @@
-<!--pages/login/login.wxml-->
-<view class="root">
-  <view class="top">
-    <image class="login-img" src="/pages/images/1.jpg"></image>
-  </view>
-  <form bindsubmit="create_login">
-    <view class="item">
-      <text>手机：</text><input name="phone" placeholder="请输入您的手机号"></input>
+
+<view class="white-container">  
+    <view class="input-group">  
+    <view class="input-box">
+    <image  class="phone" src='/pages/images/手机.png' /> 
+      <input  placeholder="账号" name="phone" bindinput="phone"/> 
+    </view> 
+    <view class="input-box">
+    <image src="/pages/images/锁.png" class="phone"></image>
+      <input  placeholder="密码" password="true" name="password" bindinput="password"/>  
     </view>
-    <view class="item">
-      <text>密码：</text><input name="password" placeholder="请输入您密码" password="true"></input>
+    </view>  
+    <view class="zhuce" bind:tap="zhuce">暂无账号，先注册
     </view>
-    <button class="submit" form-type="submit"><text>登录</text></button>
-  </form>
-  <view class="zhuce" bindtap="zhuce">暂无账号？请先注册</view>
-</view>
+    <view class="submit-button" bind:tap="create_login">
+    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
+    <text class="fanhui">提交</text>
+    </view>
+  </view>  
+  

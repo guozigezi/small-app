@@ -1,6 +1,9 @@
 const db = wx.cloud.database()
 Page({
   data: {
+name:[],
+number:[],
+password:[]
 
   },
   onLoad() {
@@ -34,6 +37,7 @@ submit(e){
   let number = this.data.number
   let name = this.data.name
   let password=this.data.password
+ 
   db.collection('teachers').where({
     _id:teacher._id
   }).update({
@@ -54,6 +58,7 @@ submit(e){
       console.log('修改失败')
     })
 })
-
+  
+ 
 }
 })

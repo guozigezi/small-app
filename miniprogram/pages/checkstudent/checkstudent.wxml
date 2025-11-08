@@ -1,18 +1,35 @@
 <!--pages/checkstudent/checkstudent.wxml-->
 <view wx:if="{{current==0}}">
+<view class="top">学生作答</view>
+<scroll-view  class="container1" scroll-y="true">
 <view wx:for="{{title}}">
-<view class='my_item' bindtap="showrecord" data-text='{{index}}'>
-        <text>{{item}}</text>
-        <view class='right_arrow' />
+<view class="container2" bind:tap="showrecord" hover-class="hover-container2" data-text="{{index}}">{{item}}</view>
 </view>
+</scroll-view>
+
+<view class="submit-button" bind:tap="returnmain">
+    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
+    <text class="fanhui">返回</text>
+    </view>
 </view>
-<button bind:tap="rerurnmain">返回</button>
+
+<view wx:else>
+<view wx:if="{{name.length==0}}">
+<view class="kuang"><text>暂无学生作答</text></view>
 </view>
 <view wx:else>
-<view wx:if="{{name.length==0}}"><text>暂无学生作答</text>
+
+  <scroll-view class="kuang" scroll-y="true">
+
+  <view  wx:for="{{name}}"  class='kuang1' >
+        <view class="score">{{item}} 得分：{{score[index]}}</view>
 </view>
-<view wx:else>
-<view wx:for="{{name}}" class='my_item'>{{item}} 得分:{{score[index]}}</view>
+
+</scroll-view>
 </view>
-<button bind:tap="return">返回</button>
+<view class="submit-button" bind:tap="return">
+    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
+    <text class="fanhui">返回</text>
+</view>
+
 </view>

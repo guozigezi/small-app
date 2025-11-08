@@ -51,6 +51,7 @@ Page({
         let phone = this.data.phone
         let name = this.data.name
         let password=this.data.password
+        if(!(phone==[]&&neme==[]&&password==[])){
         db.collection('user').doc(user._id).update({
           data: {
               name: name,
@@ -68,6 +69,7 @@ Page({
               title: '修改成功',
           })
       })
+    }
         /*if (filePath == user.avatarUrl && name == user.name) {
             console.log('头像姓名都没有改变')
         } else if (filePath == user.avatarUrl && name != user.name) {

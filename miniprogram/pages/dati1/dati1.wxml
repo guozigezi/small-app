@@ -1,19 +1,24 @@
 
-<view class="text">第{{current+1}}题/共{{option.length}}题</view>
-<view>{{currentquestion}}</view>
-<radio-group bindchange="record" >
-<view wx:for="{{currentoption0}}">
-<radio value='{{index}}'  checked="{{judje[index]}}"/>
-<text>{{item}}</text>
+<view class="continer">
+<view class="sheet">
+<view class='naire'>
+<view class='question'>{{currentquestion}}</view>
+<view wx:if="{{currentoption.length!=1}}">
+<radio-group class='radio-group' name='answer' bindchange="record">
+<view  wx:for="{{currentoption0}}" class="song">
+<label class='radio'><radio value='{{index}}' color='#0242ca' checked="{{judje[index]}}" class="radio1"/>{{item}}</label>
 </view>
-
 </radio-group>
-<view wx:if="{{current<option.length-1}}">
-<button type="primary" bindtap="next">下一题</button>
 </view>
 <view wx:else>
-<button type="primary" bindtap="submmit">提交</button>
+  <input  placeholder="请输入答案" value="{{input_current_answer}}" type="text" bindinput="record"/>
 </view>
-<button type="default" bindtap="remove">返回上一题</button>
-<button type="default" bindtap="return">退出答题</button>
-
+</view>
+<view class='button-group'>
+<button class='button' hover-class='none' bindtap='remove' disabled='{{current==0}}'>上一题</button>
+<button wx:if="{{current<option.length-1}}" class='button' hover-class='none' form-type='submit' bindtap='next'>下一题</button>
+<button wx:else class='button' hover-class='none' form-type='submit' bindtap='submmit'>提交</button>
+</view>
+<view class='id'>{{current+1}}/{{option.length}}</view>
+</view>
+</view>

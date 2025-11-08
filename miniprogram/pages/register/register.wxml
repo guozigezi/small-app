@@ -13,7 +13,7 @@
     <text>姓名:</text>
     <input name="name" placeholder="输入姓名" />
   </view>
-  <button bindtap="closeTank">点击上传头像</button>
+  <button bindtap="opentank">点击上传头像</button>
   <button id="btn1" formType="submit">注册</button>
   <!-- </view> -->
 </form>

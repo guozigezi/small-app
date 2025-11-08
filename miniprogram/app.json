@@ -4,6 +4,9 @@
     "pages/me2/me2",
     "pages/teacher/teacher",
     "pages/dati1/dati1",
+    "pages/teacherlog/teaxherlog",
+    "pages/showpublic1/showpublic1",
+    "pages/showpublic2/showpublic2",
     "pages/showquestions/showquestions",
     "pages/shangchuan/shangchuan",
     "pages/index/index",
@@ -14,12 +17,13 @@
     "pages/checkstudent/checkstudent",
     "pages/studentcheck/studentcheck",
     "pages/name/name"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "MBTI答题小程序",
+    "navigationBarTitleText": "组织行为学PtoT测试小屋",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

@@ -50,5 +50,10 @@ wx.navigateTo({
     wx.navigateTo({
       url: '/pages/name/name',
     })
+  },
+  showpublic(){
+    wx.navigateTo({
+      url: '/pages/showpublic1/showpublic1',
+    })
   }
 })

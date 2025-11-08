@@ -1,0 +1,18 @@
+<text class="toplog">教师端登录</text>
+<view class="white-container">  
+    <view class="input-group">  
+    <view class="input-box">
+    <image  class="phone" src='/pages/images/手机.png' /> 
+      <input  placeholder="账号" name="phone" bindinput="id"/> 
+    </view> 
+    <view class="input-box">
+    <image src="/pages/images/锁.png" class="phone"></image>
+      <input  placeholder="密码" password="true" name="password" bindinput="password"/>  
+    </view>
+    </view>  
+    <view class="submit-button" bind:tap="logteacher">
+    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
+    <text class="fanhui">登录</text>
+    </view>
+  </view>  
+  

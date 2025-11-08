@@ -1,0 +1,23 @@
+<!--pages/showpublic2/showpublic2.wxml-->
+<scroll-view class="sheet" scroll-y="true">
+<view wx:for="{{form}}">
+  第{{index+1}}题
+<view>
+  {{item[0]}}
+  <view wx:if="{{item[1].length!=1}}">
+    <view wx:for="{{item[1]}}">
+     {{index+1}}.{{item}}
+    </view>
+  </view>
+  <view wx:else>
+    <view wx:for="{{item[1]}}">
+    填空题：{{item}}
+    </view>
+  </view>
+ </view>
+</view>
+<view class="submit-button" bind:tap="delete">
+    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
+    <text class="fanhui">删除</text>
+</view>
+</scroll-view>

@@ -59,7 +59,8 @@ Page({
     addUser(user) {
         user._id = user.phone
         // 给用户一个默认头像
-        user.avatarUrl = '/image/no_login.png'
+        user.avatarUrl = this.data.avatarUrl
+        console.log(user)
         dbUser.add({
             data: user
         }).then(res => {
@@ -76,39 +77,21 @@ Page({
             }, 1000)
         })
     },
+opentank(){
+this.setData({
+  userInfo_tank:true
+})
+    },
     closeTank(e) {
-      if (!this.data.userInfo_tank) {
-          wx.cloud.database().collection('user2')
-              .get()
-              .then(res => {
-                  console.log("用户信息====", res);
-                  if (res.data.length) {
-                      this.setData({
-                          userInfo: res.data[0],
-                          userInfo_tank: false,
-                      })
-                  } else {
-                      console.log("还未注册====", res)
-                      this.setData({
-                          userInfo_tank: true
-                      })
-                  }
-              }).catch(res => {
-                  console.log('编程小石头提醒你请添加user2表')
-              })
-      } else {
-          this.setData({
-              userInfo_tank: false
-          })
-      }
-
+   this.setData({
+    userInfo_tank: false})
   },
-  /*onChooseAvatar(e) {
+  onChooseAvatar(e) {
     console.log(e);
     this.setData({
         avatarUrl: e.detail.avatarUrl
     })
-},*/
+},
 submit(e) {
   if (!this.data.avatarUrl) {
       return wx.showToast({
@@ -116,18 +99,9 @@ submit(e) {
           icon: 'error'
       })
   }
-  /*if (!this.data.nickName) {
-      return wx.showToast({
-          title: '请输入昵称',
-          icon: 'error'
-      })
-  }*/
+ 
   this.setData({
       userInfo_tank: false
-  })
-  wx.showLoading({
-      title: '正在注册',
-      mask: 'true'
   })
   let tempPath = this.data.avatarUrl
 
@@ -142,31 +116,6 @@ submit(e) {
           console.log('上传成功', res)
           let fileID = res.fileID
           wx.hideLoading()
-          wx.cloud.database().collection('user2')
-              .add({
-                  data: {
-                      avatarUrl: fileID,
-                      nickName: this.data.nickName
-                  }
-              }).then(res => {
-                  let user = {
-                      avatarUrl: fileID,
-                      nickName: this.data.nickName
-                  }
-                  // 注册成功
-                  console.log('注册成功')
-
-                  this.setData({
-                      userInfo: user,
-                  })
-              }).catch(res => {
-                  console.log('注册失败', res)
-                  wx.showToast({
-                      icon: 'error',
-                      title: '注册失败',
-                  })
-              })
-
       },
       fail: err => {
           wx.hideLoading()

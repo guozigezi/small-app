@@ -1,5 +1,5 @@
 page {
-    background: gainsboro;
+    background: linear-gradient(180deg, rgba(87, 165, 255, 1) 10.35%,rgba(89, 166, 255, 0.54) 19.5%,rgba(90, 167, 255, 0.3) 27.54%, rgba(91, 167, 255, 0.19) 60.14%,rgba(92, 168, 255, 0) 100%),url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E9%A3%9E%E6%9C%BA1.png?sign=fcfbfa2d3509f6bf8d7b722596d1e7cb&t=1739602975)no-repeat -200rpx 900rpx/80%,url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E9%A3%9E%E6%9C%BA2.png?sign=5aa45ba9c0b060edd53b99158d0d3d68&t=1739602996)no-repeat 500rpx 950rpx/60%, url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E6%B0%B4%E5%8D%B0.png?sign=e4caff61ec2654d383d22a73a2db6961&t=1739602684)no-repeat -300rpx 100rpx/150%  auto;
 }
 .page{
   width: 100%;
@@ -7,23 +7,26 @@ page {
 }
 .login_root {
     display: flex;
+    flex-direction: column;
     padding: 50rpx;
     align-items: center;
-    background: #2E8B57;
-}
 
+}
 .avatar {
     border-radius: 100%;
-    width: 180rpx;
-    height: 180rpx;
-    margin-right: 30rpx;
-    background: gainsboro;
-
+    width: 210rpx;
+    height: 210rpx;
+    margin-top: 50rpx;
+    margin-right: 10rpx;
+    background: rgba(109, 156, 214, 1);
+    border: 5px solid rgba(255, 255, 255, 1);
 }
 
 .name {
     font-size: 40rpx;
+    font-weight: 400;
     color: white;
+    text-align: center;
 }
 
 .tuichu {
@@ -31,94 +34,138 @@ page {
     color: FFFFFF;
     margin-top: 10rpx;
 }
+.container{
+  margin-top: -60rpx;
+height: 700rpx;
 
-.my_item {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20rpx;
-    background: white;
-    border-bottom: 1px solid gainsboro;
-}
+  width: 100% ;
+display: flex;
+flex-direction: column;
 
-.right_arrow {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    padding: 3px;
-    position: absolute;
-    right: 15px;
-    /* margin-left: 66%; */
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
 }
-.nav-son{
-  position: relative;
-  /* 让下拉提示信息永远放于下拉内容的上面 */
-  z-index: 99;
-  border-top: 1px solid #d1d3d4;
-  border-bottom: 1px solid #d1d3d4;
-  background: #fff;
+.childcontainer{
+margin-top: 70rpx;
+width: 600rpx;
+height: 100rpx;
+opacity: 1;
+display: flex;
+flex-direction: row;
+border-radius: 60rpx;
+background: linear-gradient(90deg, rgba(178, 196, 217, 1) 0%, rgba(140, 192, 252, 1) 0%, rgba(2, 113, 240, 0) 100%);
+border: 1rpx solid rgba(140, 192, 252, 1);
+box-shadow: 0rpx 2rpx 4rpx  rgba(0, 0, 0, 0.25);
+text-align: center;
+}
+.childcontainer1{
+  margin-top: 30rpx;
+  width: 600rpx;
+  height: 100rpx;
+  opacity: 1;
   display: flex;
-  height: 40px;
-  align-items:center;
-  font-size: 18px;
-}
-/* 下拉列表 下三角的样式 */
-.nav-son image{
-  position: absolute;
-  right: 30rpx;
-  width: 50rpx;
-  height: 50rpx;
-}
-
-/* 下拉框的样式 */
-.temp{
-  /* 默认为不显示 */
-  display:none;
-  /* 下拉框的宽度， */
-  width: 100%;
-  /* 下拉框的最大高度 */
-  max-height: 750rpx;
-  overflow-y: scroll;
-  padding: 0 0 0 20rpx;
-  line-height:100rpx;
-  background: #fff;
-}
-
-/* 下拉框内容的样式 */
-.temp view{
-  border-bottom: 1px solid #d1d3d4;
-  font-size: 14px;
-  color: #666;
-}
-
-/* 下拉动画 */
-/* @keyframes Css3 新标签，循环动画 */
-@keyframes slidown{
-  from{
-      transform:  translateY(-100%);
+  flex-direction: row;
+  border-radius: 60rpx;
+  background: linear-gradient(90deg, rgba(178, 196, 217, 1) 0%, rgba(140, 192, 252, 1) 0%, rgba(2, 113, 240, 0) 100%);
+  border: 1rpx solid rgba(140, 192, 252, 1);
+  box-shadow: 0rpx 2rpx 4rpx  rgba(0, 0, 0, 0.25);
+  text-align: center;
   }
-  to{
-      transform:  translateY(0%);
-  }
+.childcontainer-hover{
+  border: 1rpx solid rgb(0, 90, 194);
+  border-radius:200rpx;
 }
-.slidown{
-  display: block;
-  animation: slidown .2s ease-in both;
+.arror23{
+  width:220rpx;
+  height:100rpx;
+  margin-left: -120rpx;
+  margin-top: 9rpx;
 }
-
-/* 上拉动画 */
-@keyframes slidup{
-  from{
-      transform:  translateY(0%);
-  }
-  to{
-      transform:  translateY(-100%);
-  }
+.arror21{
+  width:210rpx;
+  height:100rpx;
+  margin-left: -120rpx;
+  margin-top: 9rpx;
 }
-.slidup{
-  display: block;
-  animation: slidup .2s ease-in both;
-  height: 0px;
+.arror22{
+  width:200rpx;
+  height:100rpx;
+  margin-left: -150rpx;
+  margin-top: 9rpx;
+}
+.text1{
+margin-left: 32%;
+width: 700rpx;
+height: 80%;
+color: rgba(23, 79, 143, 1);
+margin-top: 12rpx;
+}
+.text2{
+ margin-left: 30%;
+ width:700rpx;
+ height: 80%;
+  margin-top: 12rpx;
+}
+.text3{
+  margin-left: 25%;
+  width:800rpx;
+  height: 80%;
+   margin-top: 12rpx;
+}
+.kuang{
+width: 600rpx;
+height: 500rpx;
+border-radius: 51rpx;
+background: linear-gradient(90deg, rgba(252, 255, 254, 1) 0%, rgba(123, 164, 212, 0.75) 83.8%);
+align-items: center; /* 子元素在交叉轴上居中（这里是水平居中） */  
+  justify-content: center; /* 子元素在主轴上居中（这里是垂直居中，但在这里不需要，因为我们想要垂直排列） */  
+  padding: 10px; /* 添加一些内边距 */  
+  box-sizing: border-box; /* 使内边距和边框包含在容器的宽度和高度内 */  
+  margin-top: 30rpx;
+}
+.kuang1{
+  margin-top: 10rpx;
+width: 100%;
+height: 80rpx;
+display: flex;
+justify-content: center;
+border-bottom:8rpx solid rgba(42, 130, 228, 1);
+}
+.wenjuan{
+text-align: center;
+font-size: 50rpx;
+}
+.submit-button {  
+  width: 270rpx;
+  height: 80rpx;
+  border-radius: 48rpx;
+  background: rgba(204, 204, 204, 0);
+  border: 10rpx solid rgba(0, 0, 0, 0.44);
+  display: flex;
+  flex-direction: row;
+  margin-left: 150rpx;
+  margin-top: 40rpx;
+  }
+  .arror{
+    width: 60rpx;
+    height: 50rpx;
+    margin-top: 16rpx;
+    margin-left: 20rpx;
+  }
+  .fanhui{
+    
+  /** 文本1 */
+  font-size: 60rpx;
+  font-weight: 400;
+  letter-spacing: 0rpx;
+  line-height: 40.8rpx;
+  color: rgba(0, 0, 0, 0.52);
+  text-align: center;
+  vertical-align: center;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  }
+.arrordown{
+  width:140rpx;
+  height:110rpx;
+  margin-left: -120rpx;
+margin-top: -2rpx;
 }

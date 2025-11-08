@@ -47,7 +47,7 @@ current:0
       current:0
     })
   },
-  rerurnmain(){
+  returnmain(){
   wx.redirectTo({
     url: '/pages/teacher/teacher',
   })

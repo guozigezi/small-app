@@ -1,1 +1,64 @@
-/* pages/studentcheck/studentcheck.wxss */
+page{
+  background: url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E9%A3%8E%E6%99%AF.jpg?sign=573930b3b40ea49bd5a04a45613f4d64&t=1739604807)no-repeat  bottom/100%;
+}
+.top{
+width: 100%;
+height:280 ;
+ }
+.sheet {
+
+  border-radius: 36rpx;
+  margin-top: 50rpx;
+  
+  margin-left: 55rpx;
+  width: 84%;
+  height: 800rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  left: 57px;
+padding: 20rpx;
+background: rgba(250, 247, 247, 1);
+
+}
+
+.radio {
+  margin-bottom: 20rpx;
+}
+.avatar {
+  border-radius: 100%;
+  width: 210rpx;
+  height: 210rpx;
+  margin-top: 40rpx;
+  margin-left: 260rpx;
+  background: rgba(109, 156, 214, 1);
+  border: 5px solid rgba(255, 255, 255, 1);
+}
+.microsoft {
+  font: 40rpx "microsoft yahei";
+  font-weight: 550;
+}
+.song{
+  font-family: 宋体;
+  font-size: 35rpx;
+}
+.between{
+  display: flex;
+  justify-content: space-between; /* 可选，根据需要调整子元素之间的间距 */
+  padding: 5rpx;
+  width: 100%;
+  
+}
+.twochoise{
+  width: 200rpx; /* 矩形的宽度 */
+  height: 80rpx; /* 矩形的高度 */
+  display: flex;
+  justify-content: center;  /* 水平居中 */
+  align-items: center;      /* 垂直居中 */
+  background-color:rgba(134, 182, 240, 0.8);/* 矩形的背景颜色 */
+  border-radius: 20rpx; /* 圆角半径，根据需要调整 */
+  margin: 75rpx; /* 可选，设置矩形之间的间距 */
+  text-align: center;
+  
+  font-weight: bold;   
+}
