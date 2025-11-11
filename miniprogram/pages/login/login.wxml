@@ -1,20 +1,25 @@
+<view class="auth-page">
+  <view class="hero-panel glass-card">
+    <view class="hero-badge">Student Portal</view>
+    <view class="hero-title">学生账号登录</view>
+    <view class="hero-desc">
+      进入个人中心查看待完成的量表与历史记录。
+      没有账号可先注册，再立即登录。
+    </view>
+  </view>
 
-<view class="white-container">  
-    <view class="input-group">  
-    <view class="input-box">
-    <image  class="phone" src='/pages/images/手机.png' /> 
-      <input  placeholder="账号" name="phone" bindinput="phone"/> 
-    </view> 
-    <view class="input-box">
-    <image src="/pages/images/锁.png" class="phone"></image>
-      <input  placeholder="密码" password="true" name="password" bindinput="password"/>  
+  <view class="auth-card glass-card">
+    <view class="field">
+      <view class="field-label">账号</view>
+      <input placeholder="请输入手机号" bindinput="phone" />
     </view>
-    </view>  
-    <view class="zhuce" bind:tap="zhuce">暂无账号，先注册
+    <view class="field">
+      <view class="field-label">密码</view>
+      <input placeholder="请输入密码" password="true" bindinput="password" />
     </view>
-    <view class="submit-button" bind:tap="create_login">
-    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
-    <text class="fanhui">提交</text>
+    <view class="link-row">
+      <text class="text-link" bindtap="zhuce">暂无账号？去注册</text>
     </view>
-  </view>  
-  
+    <button class="primary-btn" bindtap="create_login">提交</button>
+  </view>
+</view>
