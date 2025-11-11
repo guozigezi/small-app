@@ -28,6 +28,22 @@ exports.main = async(event, context) => {
     }
     return cell;
   };
+  const cleanText = (value) => {
+    if (typeof value !== 'string') {
+      return value;
+    }
+    return value.replace(/\s+/g, ' ').trim();
+  };
+  const parseScore = (value) => {
+    if (typeof value === 'number') {
+      return Number.isNaN(value) ? 0 : value;
+    }
+    if (typeof value === 'string') {
+      const match = value.match(/-?\d+/);
+      return match ? Number(match[0]) : 0;
+    }
+    return 0;
+  };
   const isEmpty = (value) =>
     value === undefined ||
     value === null ||
@@ -54,23 +70,31 @@ exports.main = async(event, context) => {
     if (!question || question.length === 0) {
       continue;
     }
-    const type = getCellValue(question[0]);
-    const topic = getCellValue(question[1]);
-    const optionCount = Number(getCellValue(question[2])) || 0;
+    const values = question.map((cell) => getCellValue(cell));
+    const typeRaw = values[0];
+    const topic = cleanText(values[1]);
+    let optionStart = 3;
+    let optionCount = Number(values[2]);
+    if (Number.isNaN(optionCount) || optionCount <= 0) {
+      optionStart = 2;
+      optionCount = Math.floor((values.length - optionStart) / 2);
+    }
     const option = [];
 
     for (let h = 0; h < optionCount; h++) {
-      const optionText = getCellValue(question[3 + 2 * h]);
-      const optionScore = Number(getCellValue(question[4 + 2 * h]));
+      const textIndex = optionStart + 2 * h;
+      const scoreIndex = textIndex + 1;
+      const optionText = cleanText(values[textIndex]);
+      const optionScore = parseScore(values[scoreIndex]);
       if (isEmpty(optionText)) {
         continue;
       }
-      option.push([optionText, Number.isNaN(optionScore) ? 0 : optionScore]);
+      option.push([optionText, optionScore]);
     }
-    if (isEmpty(topic)) {
+    if (isEmpty(topic) || option.length === 0) {
       continue;
     }
-    questionkind.push(isEmpty(type) ? '' : type);
+    questionkind.push(isEmpty(typeRaw) ? '' : typeRaw);
     questions.push([topic, option]);
   }
 
