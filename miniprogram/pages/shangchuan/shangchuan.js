@@ -98,7 +98,7 @@ forms:[]
   },
   async upload(name,path){
     wx.cloud.init({
-      env: 'cloud1-3gi51qcb61981a27'
+      env: 'cloud1-0gopr9bga04d4ea8'
     })
 
    await wx.cloud.uploadFile({

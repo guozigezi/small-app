@@ -1,4 +1,4 @@
-const db=wx.cloud.database()
+﻿const db=wx.cloud.database()
 const app = getApp()
 var util = require('../utils.js');
 Page({
@@ -362,7 +362,10 @@ async submmit(){
          })
       }
     
-     
+  wx.showLoading({
+    title: '正在上传中',
+  })
+
  await db.collection('record').add({
     data:{
     问卷:this.data.formname,
@@ -384,7 +387,10 @@ async submmit(){
     this.setData({
       newid:newRecordId
     })
+    
   })
+  
+  
  wx.setStorageSync('delete', this.data.formname)
  wx.setStorageSync('userrecord', [this.data.username,this.data.newid,this.data.avatural])
  var pages = getCurrentPages();
@@ -392,7 +398,8 @@ async submmit(){
  var delta = pages.length - prevPage.index - 1; // 计算需要返回的页面数
     wx.redirectTo({
       url:'/pages/studentcheck/studentcheck',
-    })
+    })  
+
   
   }
   else {

@@ -48,26 +48,26 @@ font-size: 60rpx;
   
   display: flex;
   flex-direction: column;
- align-items: center;
+ align-items: stretch;
   box-sizing: border-box; /* 使内边距和边框包含在容器的宽度和高度内 */  
   margin-top: 30rpx;
   margin-left: 5%;
   }
   .kuang1{
-  margin-top: 5rpx;
- 
-  width: 80%;
-  height: 80rpx;
-  display: flex;
-  justify-content: center;
+  width: 94%;
+  margin: 10rpx auto;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: block;
   border-bottom:8rpx solid rgba(42, 130, 228, 1);
-  margin-left: 10%;
   }
   .score{
-    margin-bottom: -50rpx;
-    text-align: center;
-    height: 60rpx;
-    font-size: 50rpx;
+    margin: 0;
+    text-align: left;
+    font-size: 34rpx;
+    line-height: 1.6;
+    word-break: break-word;
+    white-space: normal;
   }
   .hover-container2{
     border: 6rpx solid rgb(38, 139, 255);
