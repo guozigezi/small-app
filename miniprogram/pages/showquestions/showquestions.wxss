@@ -77,17 +77,21 @@ page {
       justify-content: baseline;
       
     }
-    .typr_button
-    {
-      width:150rpx;
-      height:80rpx;
-      margin-top: 10rpx;
-      margin-left:20rpx ;
-      border-radius: 30rpx;
-      background: rgba(98, 166, 255,60%);
-      color: white;
-      
-    }
+.typr_button
+{
+  width:150rpx;
+  height:80rpx;
+  margin-top: 10rpx;
+  margin-left:20rpx ;
+  border-radius: 30rpx;
+  background: rgba(98, 166, 255,60%);
+  color: white;
+  
+}
+.typr_button.active{
+  background: linear-gradient(135deg, #6a55ff, #8a72ff);
+  box-shadow: 0 12rpx 24rpx rgba(106, 85, 255, 0.25);
+}
     .types{
     width: 100%;
     margin-top: 10rpx;

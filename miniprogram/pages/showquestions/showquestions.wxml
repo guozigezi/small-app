@@ -1,4 +1,4 @@
-<scroll-view class="sheet" scroll-y="true">
+﻿<scroll-view class="sheet" scroll-y="true">
 <view ><text class="color3">注意事项：</text>{{detail[number]}}</view>
 <view wx:for="{{currentquestions}}">
 <view wx:if="{{kinds[kind[index]-1]}}" class="title">
@@ -37,22 +37,18 @@
 </picker>
 </view>
 <view class="type_buttons">
-
-<view class="typr_button" bind:tap="settype1" data-index="1">MBTI测试</view>
-<view class="typr_button" bind:tap="settype1" data-index="2">卡特尔16人格</view>
-<view class="typr_button" bind:tap="settype1" data-index="3">霍兰德职业兴趣</view>
-<view class="typr_button" bind:tap="settype1" data-index="4">LPC测试</view>
-<view class="typr_button" bind:tap="settype1" data-index="5">大五人格</view>
-<view class="typr_button" bind:tap="settype1" data-index="6">气质类型</view>
-<view class="typr_button" bind:tap="settype1" data-index="7">AB型人格</view>
-
+  <block wx:for="{{typeOptions}}" wx:key="value">
+    <view class="typr_button {{currenttype==item.value ? 'active' : ''}}" bindtap="settype1" data-value="{{item.value}}">
+      {{item.label}}
+    </view>
+  </block>
 </view>
 <view class="submmit-container">
 <view class="submit-button" hover-class="hover-submmit">
-<view class="fanhui" bind:tap="remove" ><text class="remove">删除</text></view>
+<view class="fanhui" bindtap="remove" ><text class="remove">删除</text></view>
 </view>
 <view class="submit-button" hover-class="hover-submmit">
-  <view class="fanhui" bind:tap="publish"><text class="publish">发布</text></view>
+  <view class="fanhui" bindtap="publish"><text class="publish">发布</text></view>
 </view>
 </view>
 

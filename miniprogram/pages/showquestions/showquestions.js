@@ -1,4 +1,4 @@
-
+﻿
 const db=wx.cloud.database()
 const app = getApp()
 var util = require('../utils.js');
@@ -15,7 +15,16 @@ publishtiem:[],
 limitdate:[],
 ifpublic:false,
 publicquestion:[],
-currenttype:0,
+currenttype:-1,
+typeOptions:[
+  { label:"MBTI测试", value:0 },
+  { label:"霍兰德职业兴趣", value:1 },
+  { label:"卡特尔16人格", value:2 },
+  { label:"LPC测试", value:3 },
+  { label:"气质类型", value:4 },
+  { label:"AB型人格", value:5 },
+  { label:"大五人格", value:6 }
+],
 isChecked: false,
 numberRange: [],
 selectedNumber: 0
@@ -154,6 +163,14 @@ publish()
     else {
     let a=this.data.number
     let data=this.data.forms
+    const judgekind = Number(this.data.currenttype)
+    if (Number.isNaN(judgekind) || judgekind < 0) {
+      wx.showToast({
+        title: '请选择量表类型',
+        icon: 'none'
+      })
+      return
+    }
     db.collection('public').add({
       data:{
         发布时间:this.data.currenttime,
@@ -165,7 +182,7 @@ publish()
         分类:this.data.kinds,
         每道题所属种类:this.data.kind,
         评价:data[a].评价,
-        量表:this.data.number
+        量表:judgekind
       }
     }).then(res=>{
       console.log('添加成功',res)
@@ -175,13 +192,11 @@ publish()
     })
     }
   },
-  settype1(e)
-  {
-     console.log(e)
-      this.setData
-      ({
-        currenttype:e.currentTarget.dataset.index
-      })
+  settype1(e) {
+    const value = Number(e.currentTarget.dataset.value)
+    this.setData({
+      currenttype: value
+    })
   },
 getthreshold_m(e)
 {
@@ -244,3 +259,5 @@ judge3(e){
   })
 }
 })
+
+
