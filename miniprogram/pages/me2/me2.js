@@ -51,12 +51,16 @@ var user = wx.getStorageSync('user2')
       姓名:this.data.userInfo.name
     }).get().then(res=>{
       console.log(res)
+      // 初始化空数组，避免数组长度问题
+      this.setData({
+        record: [],
+        id: []
+      })
+      // 重新设置数据
       for(var i=0;i<res.data.length;i++){
-        var onrecord='record['+i+']'
-        var onid='id['+i+']'
         this.setData({
-          [onrecord]:res.data[i].问卷,
-          [onid]:res.data[i]._id
+          [`record[${i}]`]: res.data[i].问卷,
+          [`id[${i}]`]: res.data[i]._id
         })
       }
       
@@ -99,11 +103,17 @@ var user = wx.getStorageSync('user2')
     db.collection('record').where({
       姓名:this.data.userInfo.name
     }).get().then(res=>{
-      
+      console.log('查询到的记录:', res.data)
+      // 初始化空数组，避免数组长度问题
+      this.setData({
+        record: [],
+        id: []
+      })
+      // 重新设置数据
       for(var i=0;i<res.data.length;i++){
-        var onrecord='record['+i+']'
         this.setData({
-          [onrecord]:res.data[i].问卷
+          [`record[${i}]`]: res.data[i].问卷,
+          [`id[${i}]`]: res.data[i]._id
         })
       }
       

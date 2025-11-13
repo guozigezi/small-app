@@ -66,7 +66,12 @@ choose:1
         })
     }
       if(this.data.number==2){
-
+        // 处理评价类型的数据显示
+        console.log('评价数据:', this.data.judge);
+        this.setData({
+          finaltype: this.data.final, // 最终结果（高分/中等/低分）
+          judgetext: this.data.judge || [] // 评价文本数组
+        });
       }
       if(this.data.number==3){
         this.setData({

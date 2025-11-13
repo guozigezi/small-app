@@ -30,7 +30,7 @@
 <view wx:for="{{kinds}}">
 <view >类型：{{item}}</view>
 <view>得分：{{final[index]}}</view>
-<view>评价：{{judge[index]}}</view>
+<view>评价：{{judgetext[index] || '暂无评价'}}</view>
 </view>
 </view>
 <view wx:if="{{number==4}}">

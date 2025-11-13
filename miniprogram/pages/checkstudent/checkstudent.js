@@ -76,6 +76,13 @@ showrecord(e){
     if(cleaned.length===0){
       return '-'
     }
+    // 检查是否为评价类数组（每个元素可能包含多个字符）
+    const isEvaluationArray=cleaned.some(item=>typeof item==='string'&&item.length>1)
+    if(isEvaluationArray){
+      // 对于评价类数组，使用分号分隔
+      return cleaned.join('；')
+    }
+    // 对于性格类型等单字符数组，保持原有逻辑
     const allSingleChar=cleaned.every(item=>typeof item==='string'&&item.length===1)
     return cleaned.join(allSingleChar?'':'、')
   }
@@ -84,8 +91,19 @@ showrecord(e){
   }
   if(typeof result==='object'){
     try{
+      // 检查是否为包含详细评价的对象
+      if(Object.keys(result).some(key => key.includes('评价'))){
+        // 如果是评价对象，尝试提取评价文本
+        const evaluationTexts=Object.values(result).filter(value => 
+          typeof value === 'string' && value.length > 1
+        );
+        if(evaluationTexts.length > 0){
+          return evaluationTexts.join('；')
+        }
+      }
       return JSON.stringify(result)
     }catch(err){
+      console.error('格式化结果失败:', err)
       return '-'
     }
   }
