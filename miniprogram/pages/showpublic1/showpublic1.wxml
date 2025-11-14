@@ -1,0 +1,6 @@
+<view class="top">已发布题目</view>
+<scroll-view  class="container1" scroll-y="true">
+<view wx:for="{{title}}">
+<view class="container2" hover-class="hover-container2" bind:tap="publicquestion" data-text="{{index}}">{{item}}</view>
+</view>
+</scroll-view>

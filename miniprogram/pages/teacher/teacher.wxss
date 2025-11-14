@@ -1,0 +1,42 @@
+/* pages/teacher/teacher.wxss */
+page {
+  background:url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E9%A3%9E%E6%9C%BA4.png?sign=a768221b00955d40f12987f93c8e5d84&t=1739605398)no-repeat 260rpx 155rpx/30%,url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E8%88%AA%E5%B0%8F%E5%A4%A9.png?sign=1a29859e48bbb7fb51ad9fad7c2b2208&t=1739605316)no-repeat 265rpx 150rpx/30%, url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E9%A3%9E%E6%9C%BA4.png?sign=4fd081b7d5fb1282b9e50cef7181141a&t=1739605655)no-repeat -200rpx 900rpx/80%,url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E9%A3%9E%E6%9C%BA3.png?sign=3387738fbc9d40afe8ad28d67deb1988&t=1739605672)no-repeat 500rpx 950rpx/60%, url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E6%B0%B4%E5%8D%B0.png?sign=85f33dfe82a951f37c6727b4cccee5b5&t=1739605606)no-repeat -300rpx 250rpx/150%  auto,linear-gradient(180deg, rgba(87, 165, 255, 1) 10.35%,rgba(89, 166, 255, 0.54) 19.5%,rgba(90, 167, 255, 0.3) 27.54%, rgba(91, 167, 255, 0.19) 60.14%,rgba(92, 168, 255, 0) 100%);
+}
+.name {
+  font-size: 40rpx;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin-top: 400rpx;
+}
+.container1{
+  width: 100%;
+  height: 620rpx;
+  margin-top: 0;
+  padding: 7%;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+}
+.container2{
+width: 35%;
+height: 170rpx;
+border-radius: 48rpx;
+background: linear-gradient(90deg, rgba(178, 196, 217, 1) 0%, rgba(140, 192, 252, 1) 0%, rgba(2, 113, 240, 0) 100%);
+border: 5rpx solid rgb(144, 192, 255);
+box-shadow: 0rpx 2rpx 4rpx  rgba(0, 0, 0, 0.25);
+margin-top: 10rpx;
+margin-right: 100rpx;
+justify-content: space-between;
+text-align: center;
+font-size: 50rpx;
+}
+.container2-hover
+{
+  border: 8rpx solid rgb(73, 152, 255);
+}
+.containertext{
+  width: 130%;
+  height: 45%;
+  margin-left: 13%;
+  margin-top: 15%;
+}

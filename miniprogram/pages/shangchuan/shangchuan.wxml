@@ -1,0 +1,12 @@
+<!--pages/shangchuan/shangchuan.wxml-->
+<view class="top">添加题目</view>
+<view class="add" bind:tap="onAddSurveyExcel">
+<image src="/pages/images/加号框.png" class="jiahao"></image>
+</view>
+<view>
+<scroll-view  class="container1" scroll-y="true">
+<view wx:for="{{title}}">
+<view class="container2" bind:tap="gotoupload" data-text="{{index}}" hover-class="hover-container2">{{item}}</view>
+</view>
+</scroll-view>
+</view>

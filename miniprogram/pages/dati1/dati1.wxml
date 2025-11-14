@@ -1,0 +1,25 @@
+
+<view class="continer">
+<view class="sheet">
+<view class='naire'>
+<view class='question'>{{currentquestion}}</view>
+<view wx:if="{{currentoption.length!=1}}">
+<radio-group class='radio-group' name='answer' bindchange="record">
+<view  wx:for="{{currentoption0}}" class="song">
+<label class='radio'><radio value='{{index}}' color='#0242ca' checked="{{judje[index]}}" class="radio1"/>{{item}}</label>
+</view>
+</radio-group>
+</view>
+<view wx:else>
+  <input  placeholder="请输入答案" value="{{input_current_answer}}" type="text" bindinput="record"/>
+</view>
+</view>
+<view class='button-group'>
+<button class='button' hover-class='none' bindtap='remove' disabled='{{current==0}}'>上一题</button>
+<button wx:if="{{current<option.length-1}}" class='button' hover-class='none' form-type='submit' bindtap='next'>下一题</button>
+<button wx:else class='button' hover-class='none' form-type='submit' bindtap='submmit'>提交</button>
+<button wx:if="{{showDebugButton}}" class='debug-button' hover-class='none' bindtap='debugSubmit'>调试完成</button>
+</view>
+<view class='id'>{{current+1}}/{{option.length}}</view>
+</view>
+</view>

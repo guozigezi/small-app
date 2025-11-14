@@ -1,0 +1,75 @@
+Page{
+  background: url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E9%A3%9E%E6%9C%BA4.png?sign=717fd9873f2f3799eacd722d6819d619&t=1739603452)no-repeat 20rpx 80rpx/80%,url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E5%9C%86%E5%BD%A2.png?sign=241720060dd27911ccf5b19c987d8ae9&t=1739603941)no-repeat 250rpx 520rpx/30%,url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E5%9C%86%E5%BD%A2.png?sign=26afa44850e50b4b94c0e7267a7877e7&t=1739603544)no-repeat 400rpx 30rpx/70%,url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E5%9C%86%E5%BD%A2.png?sign=26afa44850e50b4b94c0e7267a7877e7&t=1739603544)no-repeat -40rpx -40rpx/40%,url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E9%A3%9E%E6%9C%BA3.png?sign=38d30c546d3ce8e3dabaa58bbaff7455&t=1739603671)no-repeat 230rpx 1130rpx/35%;
+}
+.white-container { 
+  margin-top: 550rpx;
+  height: 500rpx;
+  width: 100%;
+    display: flex;  
+    flex-direction: column;  
+    justify-content: center; /* 垂直居中 */  
+    align-items: center; /* 水平居中（对于单个项目）*/  
+    flex: 1; /* 让白色背景容器占据剩余空间 */  
+  
+    
+  }  
+    
+  .input-group {  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center; /* 使得内部的输入框在水平方向上居中（如果需要）*/  
+    margin-top: 0rpx;
+    width: 100%; /* 设置宽度为容器宽度 */  
+  }  
+    
+  .input-box {  
+    left: 0rpx;
+    top: 0rpx;
+    width: 600rpx;
+    height: 100rpx;
+    opacity: 1;
+    border-radius: 48rpx;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(204, 214, 203, 1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0rpx 30rpx 0rpx 30rpx;
+    margin: 30rpx;
+  }  
+    
+  .submit-button {  
+  
+  width: 270rpx;
+  height: 80rpx;
+  
+  border-radius: 48rpx;
+  background: rgba(204, 204, 204, 0);
+  border: 10rpx solid rgba(0, 0, 0, 0.44);
+  display: flex;
+  flex-direction: row;
+  
+  }
+  .phone{
+    height: 50rpx;
+    width: 50rpx;
+  }
+  .arror{
+    width: 60rpx;
+    height: 50rpx;
+    margin-top: 16rpx;
+    margin-left: 20rpx;
+  }
+  .fanhui{
+    
+  /** 文本1 */
+  font-size: 60rpx;
+  font-weight: 400;
+  letter-spacing: 0rpx;
+  line-height: 40.8rpx;
+  color: rgba(0, 0, 0, 0.52);
+  text-align: center;
+  vertical-align: center;
+  margin-top: 16rpx;
+  margin-left: 20rpx;
+  }

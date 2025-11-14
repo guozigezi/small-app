@@ -1,0 +1,9 @@
+<!--pages/teacher/teacher.wxml-->
+<view class="name">{{teacher.name}}老师</view>
+<view class="container1">
+<view class="container2" hover-class="container2-hover" bindtap="gotochange"><image class="containertext" src="/pages/images/修改资料.png"></image></view>
+<view class="container2" hover-class="container2-hover" bindtap="addform"><image class="containertext" src="/pages/images/添加题目.png"></image></view>
+<view class="container2" hover-class="container2-hover" bindtap="checkstudentname"><image class="containertext" src="/pages/images/查看学生.png"></image></view>
+<view class="container2" hover-class="container2-hover" bindtap="showpublic"><image class="containertext" src="/pages/images/已发布题目.png"></image></view>
+<view class="container2" hover-class="container2-hover" bindtap="checkstudent"><image class="containertext" src="/pages/images/学生作答.png"></image></view>
+</view>

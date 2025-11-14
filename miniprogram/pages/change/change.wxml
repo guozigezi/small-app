@@ -1,0 +1,23 @@
+
+
+<view class="white-container">  
+    <view class="input-group">  
+    <view class="input-box">
+    <view>姓名：</view>
+      <input  value="{{name}}" bindinput="getName" /> 
+    </view> 
+    <view class="input-box">
+    <view>账号：</view>
+      <input  value="{{phone}}" bindinput="getID"/>  
+    </view>
+    <view class="input-box">
+    <view>密码：</view>
+      <input  value="{{password}}" bindinput="getpassword"/>  
+    </view>
+    </view>  
+    <view class="submit-button" bind:tap="submit">
+    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
+    <text class="fanhui">修改</text>
+    </view>
+  </view>  
+  

@@ -1,0 +1,43 @@
+Page{
+  background:url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E8%88%AA%E5%B0%8F%E5%A4%A9.png?sign=cc1e9bff3418066406164c59ec8b20d3&t=1739763744)no-repeat 80rpx 150rpx/ 75% auto,url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E9%97%AE%E5%8D%B7%E8%B0%83%E7%A0%94.png?sign=3956072a524a2c956467a335a82a2247&t=1739763851)no-repeat 250rpx 600rpx/30% auto,
+  url(https://636c-cloud1-0gopr9bga04d4ea8-1336284918.tcb.qcloud.la/%E6%B0%B4%E5%8D%B0.png?sign=7370a719e817fbc871db936df913b731&t=1739763784)no-repeat -300rpx 100rpx/150%  auto,linear-gradient(180deg, rgba(87, 165, 255, 1) 10.35%,rgba(89, 166, 255, 0.54) 19.5%,rgba(90, 167, 255, 0.3) 27.54%, rgba(91, 167, 255, 0.19) 60.14%,rgba(92, 168, 255, 0) 100%);
+}
+.container {  
+  display: flex; 
+  flex-direction: row;
+  width: 100% ;
+  margin-top: 750rpx;
+}  
+  
+.child-container1 {  
+width: 250rpx;
+height: 250rpx;
+display: flex;
+flex-direction: column;
+margin-left: 60rpx;
+}  
+.child-container2 {  
+  width: 250rpx;
+  height: 250rpx;
+  display: flex;
+  flex-direction: column;
+  margin-left: 120rpx;
+  }  
+.child-container2 {  
+  width: 250rpx;
+  height: 250rpx;
+  display: flex;
+  flex-direction: column;
+
+  margin-right: 60rpx;
+}  
+
+.text{
+  font-size: 30rpx;
+  text-align: center;
+  font-weight: bold
+}
+.tuan{
+  width: 232rpx;
+  height: 218rpx;
+  }

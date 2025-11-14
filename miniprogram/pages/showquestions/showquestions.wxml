@@ -1,0 +1,55 @@
+﻿<scroll-view class="sheet" scroll-y="true">
+<view ><text class="color3">注意事项：</text>{{detail[number]}}</view>
+<view wx:for="{{currentquestions}}">
+<view wx:if="{{kinds[kind[index]-1]}}" class="title">
+  第{{index+1}}题——{{kinds[kind[index]-1]}}
+</view>
+<view wx:else class="error">第{{index+1}}题——未检测到题型</view>
+<view>
+  {{item[0]}}
+  <view wx:if="{{item[1].length!=1}}">
+    <view wx:for="{{item[1]}}">
+     {{index+1}}.{{item[0]}}——{{item[1]}}分
+    </view>
+    </view>
+    <view wx:else>
+      <view wx:for="{{item[1]}}">
+     填空题：{{item[0]}}--{{item[1]}}分
+    </view>
+    </view>
+ </view>
+</view>
+
+<view class="choosetime">设置截止时间
+  <picker mode="date" header-text="选择时间"  value="{{limitdate}}" bindchange="bindDateChange">
+  <view class="font30">
+    <text class="color3">截止日期：</text>
+    <text class="color6">{{limitdate}}</text>
+    <text class="timeIcon">▼</text>
+  </view>
+</picker>
+<picker mode="time" header-text="选择时间"  value="{{limittime}}" bindchange="bindtimeChange">
+  <view class="font30">
+    <text class="color3">截止时间：</text>
+    <text class="color6">{{limittime}}</text>
+    <text class="timeIcon">▼</text>
+  </view>
+</picker>
+</view>
+<view class="type_buttons">
+  <block wx:for="{{typeOptions}}" wx:key="value">
+    <view class="typr_button {{currenttype==item.value ? 'active' : ''}}" bindtap="settype1" data-value="{{item.value}}">
+      {{item.label}}
+    </view>
+  </block>
+</view>
+<view class="submmit-container">
+<view class="submit-button" hover-class="hover-submmit">
+<view class="fanhui" bindtap="remove" ><text class="remove">删除</text></view>
+</view>
+<view class="submit-button" hover-class="hover-submmit">
+  <view class="fanhui" bindtap="publish"><text class="publish">发布</text></view>
+</view>
+</view>
+
+</scroll-view>

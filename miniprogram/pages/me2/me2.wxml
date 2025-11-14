@@ -1,0 +1,63 @@
+<!-- 登陆和未登陆 -->
+<view class="login_root" wx:if="{{userInfo&&userInfo.name}}">
+    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+    <view>
+        <view class="name">{{userInfo.name}}</view>
+        <view class="tuichu" bindtap="tuichu">退出登录</view>
+    </view>
+</view>
+<view wx:else class="login_root" >
+    <image class="avatar" src="/pages/images/航小天.png" bindtap="login"></image>
+    <view class="name" bindtap="login">点击登陆</view>
+</view>
+
+<view wx:if="{{userInfo&&userInfo.name}}">
+<view class="container" >
+<view wx:if="{{target==0}}">
+<view class="childcontainer" hover-class="childcontainer-hover" bindtap="goChange">
+<image class="text1" src="/pages/images/修改资料.png"></image>
+<image src="/pages/images/箭头2.png" class="arror21"></image>
+</view>
+<view class="childcontainer" hover-class="childcontainer-hover" bindtap="listpx" data-text='1'>
+<image class="text2" src="/pages/images/待作答题目.png"></image>
+<image src="/pages/images/箭头2.png" class="arror22"></image>
+</view>
+<view class="childcontainer" hover-class="childcontainer-hover" bind:tap="listpx1" data-text='2'>
+<image class="text3" src="/pages/images/我的答题记录.png"></image>
+<image src="/pages/images/箭头2.png" class="arror23"></image>
+</view>
+</view>
+<view wx:if="{{target==1}}">
+  <view class="childcontainer1"  >
+<image class="text2" src="/pages/images/待作答题目.png"></image>
+<image src="/pages/images/箭头向下.png" class="arrordown" bind:tap="fanhui"></image>
+</view>
+<scroll-view class="kuang" scroll-y="true">
+<view wx:for="{{wenjuan}}">
+<view class="kuang1" bind:tap="gotodati" data-text="{{index}}">
+<text class="wenjuan">{{item}}</text>
+</view></view>
+</scroll-view>
+<view class="submit-button" bind:tap="fanhui">
+    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
+    <text class="fanhui">返回</text>
+    </view>
+</view>
+<view wx:if="{{target==2}}">
+  <view class="childcontainer1"  >
+<image class="text3" src="/pages/images/我的答题记录.png"></image>
+<image src="/pages/images/箭头向下.png" class="arrordown" bind:tap="fanhui"></image>
+</view>
+<scroll-view class="kuang" scroll-y="true">
+<view wx:for="{{record}}">
+<view class="kuang1" bindtap="record" data-text='{{index}}'>
+<text class="wenjuan">{{item}}</text>
+</view></view>
+</scroll-view>
+<view class="submit-button" bind:tap="fanhui">
+    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
+    <text class="fanhui">返回</text>
+    </view>
+</view>
+</view>
+</view>

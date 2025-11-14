@@ -1,0 +1,49 @@
+<view class="top">
+<image wx:if="{{avatural.length>0}}" class="avatar" src="{{avatural}}"></image>
+</view>
+<scroll-view class="sheet" scroll-y="true">
+<view class="between">
+<view bind:tap="choose" data-text='1' class="twochoise">评价</view>
+<view bind:tap="choose" data-text='2' class="twochoise">我的选择</view>
+</view>
+<view>提交时间：{{submmittime}}</view>
+<view wx:if="{{choose==2}}">
+<view wx:for="{{title}}" >
+<view wx:if="{{record[index].length!=1}}">
+<text class="microsoft">{{index+1}}.{{item}}({{answeer[index]+1}})</text></view>
+<view wx:else><text class="microsoft">{{index+1}}.{{item}}</text></view>
+<radio-group>
+<view wx:if="{{record[index].length!=1}}">
+<view wx:for="{{record[index]}}" class="radio"><text class="song"> ({{index+1}}){{item}}</text></view></view>
+<view wx:else>
+<text class="song">作答：{{record[index]}}</text>
+</view>
+</radio-group>
+</view>
+</view>
+<view wx:else="{{choose==1}}">
+<view wx:if="{{number==1||number==0||number==3||number==5}}">
+<view>你的类型是：{{finaltype}}</view>
+<view>评价：{{judgetext}}</view>
+</view>
+<view wx:if="{{number==2||number==6}}" >
+<view wx:for="{{kinds}}">
+<view >类型：{{item}}</view>
+<view>得分：{{final[index]}}</view>
+<view>评价：{{judgetext[index] || '暂无评价'}}</view>
+</view>
+</view>
+<view wx:if="{{number==4}}">
+<view wx:if="{{final.length==1}}">
+<view>您的类型是{{final}}的典型类型</view>
+<view>评价：{{judgetext}}</view>
+</view>
+<view wx:else>
+<view>您的类型是{{finaltype}}的混合</view>
+<view wx:for="{{judgetext}}">
+<view>{{finaltype[index]}}:{{judgetext[index]}}</view>
+</view>
+</view>
+</view>
+</view>
+</scroll-view>

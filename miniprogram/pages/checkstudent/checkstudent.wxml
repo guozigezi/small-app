@@ -1,0 +1,35 @@
+<!--pages/checkstudent/checkstudent.wxml-->
+<view wx:if="{{current==0}}">
+<view class="top">学生作答</view>
+<scroll-view  class="container1" scroll-y="true">
+<view wx:for="{{title}}">
+<view class="container2" bind:tap="showrecord" hover-class="hover-container2" data-text="{{index}}">{{item}}</view>
+</view>
+</scroll-view>
+
+<view class="submit-button" bind:tap="returnmain">
+    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
+    <text class="fanhui">返回</text>
+    </view>
+</view>
+
+<view wx:else>
+<view wx:if="{{name.length==0}}">
+<view class="kuang"><text>暂无学生作答</text></view>
+</view>
+<view wx:else>
+
+  <scroll-view class="kuang" scroll-y="true">
+
+  <view  wx:for="{{name}}"  class='kuang1' >
+        <view class="score">{{item}} 结果：{{score[index]}}</view>
+</view>
+
+</scroll-view>
+</view>
+<view class="submit-button" bind:tap="return">
+    <image src="/pages/images/箭头 1@3x.png" class="arror"></image>
+    <text class="fanhui">返回</text>
+</view>
+
+</view>
