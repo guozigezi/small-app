@@ -1,10 +1,10 @@
-﻿const db=wx.cloud.database()
+const db=wx.cloud.database()
 const app = getApp()
 var util = require('../utils.js');
 
 // ==================== 调试开关 ====================
 // 设置为 true 开启调试功能，false 关闭调试功能
-const DEBUG_MODE = false
+const DEBUG_MODE = true
 // ================================================
 Page({
   data:{
