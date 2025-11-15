@@ -8,7 +8,7 @@ Page({
     detail:[]
   },
     onLoad(options) {
-      db.collection('public').get().then(res=>{
+      db.collection('public').limit(999).get().then(res=>{
         console.log(res)
         this.setData({
           forms:res.data
@@ -37,7 +37,7 @@ Page({
       
   },
   onShow: function () {
-    db.collection('public').get().then(res=>{
+    db.collection('public').limit(999).get().then(res=>{
       console.log(res)
       this.setData({
         forms:res.data
@@ -66,7 +66,7 @@ Page({
     
 },
 onReady(){
-  db.collection('public').get().then(res=>{
+  db.collection('public').limit(999).get().then(res=>{
     console.log(res)
     this.setData({
       forms:res.data

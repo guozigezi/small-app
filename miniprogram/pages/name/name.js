@@ -11,7 +11,7 @@ Page({
 
   
   onLoad(options) {
-    db.collection('user').get().then(res=>{
+    db.collection('user').limit(999).get().then(res=>{
       let message=res.data
       for(var i=0;i<message.length;i++){
         var onname='name['+i+']'

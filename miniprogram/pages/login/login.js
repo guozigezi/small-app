@@ -30,7 +30,7 @@ this.setData({
             db.collection('user').where({
                     phone: user.phone,
                     password: user.password
-                }).get()
+                }).limit(999).get()
                 .then(res => {
                     console.log('获取登录结果', res)
                     let users = res.data

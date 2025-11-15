@@ -16,7 +16,7 @@ choose:1
    var option 
   db.collection('record').where({
      _id:info[1]
-   }).get().then(res=>{
+   }).limit(999).get().then(res=>{
      console.log(res)
      this.setData({
        title:res.data[0].题目,

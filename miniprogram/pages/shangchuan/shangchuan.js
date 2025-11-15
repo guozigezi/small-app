@@ -7,7 +7,7 @@ forms:[]
   onLoad(){
     let that=this
     var forms=[]
-      db.collection('questions').get().then(res=>{
+      db.collection('questions').limit(999).get().then(res=>{
        //console.log(res)
        this.setData({
          forms:res.data
@@ -26,7 +26,7 @@ forms:[]
       })
   },
   onShow(){
-    db.collection('questions').get().then(res=>{
+    db.collection('questions').limit(999).get().then(res=>{
       console.log(res)
       let forms=res.data
       console.log(forms)
@@ -53,7 +53,7 @@ forms:[]
   },
   onReady()
   {
-    db.collection('questions').get().then(res=>{
+    db.collection('questions').limit(999).get().then(res=>{
       //console.log(res)
       this.setData({
         forms:res.data

@@ -94,3 +94,45 @@ Page{
   font-family: 宋体;
   font-size: 35rpx;
 }
+.debug-button {
+  background: #ff6b35;
+  border-radius: 100rpx;
+  font-size: 30rpx;
+  line-height: 52rpx;
+  height: 85rpx;
+  width: 100rpx;
+  font-weight: bold;
+  color: #fff;
+  margin: 30rpx;
+}
+.debug-button::after {
+  border: 0;
+}
+.remove-debug-button {
+  background: #dc3545;
+  border-radius: 100rpx;
+  font-size: 30rpx;
+  line-height: 52rpx;
+  height: 85rpx;
+  width: 100rpx;
+  font-weight: bold;
+  color: #fff;
+  margin: 30rpx;
+}
+.remove-debug-button::after {
+  border: 0;
+}
+.enable-debug-button {
+  background: #28a745;
+  border-radius: 100rpx;
+  font-size: 30rpx;
+  line-height: 52rpx;
+  height: 85rpx;
+  width: 100rpx;
+  font-weight: bold;
+  color: #fff;
+  margin: 30rpx;
+}
+.enable-debug-button::after {
+  border: 0;
+}

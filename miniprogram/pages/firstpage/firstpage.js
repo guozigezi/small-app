@@ -25,7 +25,7 @@ animationData2: {}, // 按钮二的动画数据
       })
     })
   }*/
-    wx.cloud.database().collection('teachers').get()
+    wx.cloud.database().collection('teachers').limit(999).get()
     .then(res1=>{
       console.log('老师',res1)
       this.setData({

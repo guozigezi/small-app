@@ -1,4 +1,4 @@
-﻿
+
 const db=wx.cloud.database()
 const app = getApp()
 var util = require('../utils.js');
@@ -34,7 +34,7 @@ selectedNumber: 0
     console.log(a)
     var time = util.formatTime(new Date());
     var forms=[]
-     await db.collection('questions').get().then(res=>{
+     await db.collection('questions').limit(999).get().then(res=>{
        console.log(res.data)
        this.setData({
          forms:res.data
@@ -67,7 +67,7 @@ selectedNumber: 0
         current:2,
         currentquestions:this.data.questions[a]
       });
-    await  db.collection('public').get().then(res=>{
+    await  db.collection('public').limit(999).get().then(res=>{
         
         for(var i=0;i<res.data.length;i++){
           var onpublicquestion='publicquestion['+i+']'

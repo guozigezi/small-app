@@ -6,7 +6,7 @@ Page({
 current:0
   },
   onLoad(options) {
-    db.collection('public').get().then(res=>{
+    db.collection('public').limit(999).get().then(res=>{
       console.log(res)
       this.setData({
         forms:res.data
@@ -28,21 +28,48 @@ showrecord(e){
    score:[]
  })
  console.log(this.data.title)
- db.collection('record').where({
-     问卷:this.data.title[e.currentTarget.dataset.text]
- }).get().then(res=>{
-   console.log(res)
-   for(var i=0;i<res.data.length;i++){
-    var onname='name['+i+']'
-    var onscor='score['+i+']'
-    const currentRecord=res.data[i]
-    const finalResult=this.extractFinalResult(currentRecord)
-     this.setData({
-        [onname]:currentRecord.姓名,
-        [onscor]:this.formatResult(finalResult)
-      })
-    }
-  })
+ // 使用云函数获取所有记录，突破20条限制
+ wx.cloud.callFunction({
+   name: 'getAllRecords',
+   data: {
+     collection: 'record',
+     where: {
+       问卷: this.data.title[e.currentTarget.dataset.text]
+     }
+   }
+ }).then(res => {
+   console.log('云函数查询结果:', res)
+   if (res.result.success) {
+     for(var i=0;i<res.result.data.length;i++){
+      var onname='name['+i+']'
+      var onscor='score['+i+']'
+      const currentRecord=res.result.data[i]
+      const finalResult=this.extractFinalResult(currentRecord)
+       this.setData({
+          [onname]:currentRecord.姓名,
+          [onscor]:this.formatResult(finalResult)
+        })
+      }
+   }
+ }).catch(err => {
+   console.error('云函数调用失败:', err)
+   // 降级使用本地查询
+   db.collection('record').where({
+       问卷:this.data.title[e.currentTarget.dataset.text]
+   }).limit(999).get().then(res=>{
+     console.log(res)
+     for(var i=0;i<res.data.length;i++){
+      var onname='name['+i+']'
+      var onscor='score['+i+']'
+      const currentRecord=res.data[i]
+      const finalResult=this.extractFinalResult(currentRecord)
+       this.setData({
+          [onname]:currentRecord.姓名,
+          [onscor]:this.formatResult(finalResult)
+        })
+      }
+    })
+ })
   },
   return(){
     this.setData({

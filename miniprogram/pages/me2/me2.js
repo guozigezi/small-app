@@ -23,7 +23,7 @@ var user = wx.getStorageSync('user2')
                 userInfo: user,
             })
         }
-   await db.collection('public').get().then(res=>{
+   await db.collection('public').limit(999).get().then(res=>{
     
       let forms=res.data
       for(var i=0;i<res.data.length;i++)
@@ -47,45 +47,51 @@ var user = wx.getStorageSync('user2')
         
       }
     })
-    db.collection('record').where({
-      姓名:this.data.userInfo.name
-    }).get().then(res=>{
-      console.log(res)
-      // 初始化空数组，避免数组长度问题
-      this.setData({
-        record: [],
-        id: []
-      })
-      // 重新设置数据
-      for(var i=0;i<res.data.length;i++){
-        this.setData({
-          [`record[${i}]`]: res.data[i].问卷,
-          [`id[${i}]`]: res.data[i]._id
-        })
+    // 使用云函数获取所有记录，突破20条限制
+    wx.cloud.callFunction({
+      name: 'getAllRecords',
+      data: {
+        collection: 'record',
+        where: {
+          姓名: this.data.userInfo.name
+        }
       }
-      
-    //   for(var j=0;j<this.data.record.length;j++){
-    //   for(var i=0;i<this.data.wenjuan.length;i++){
-    //     if(this.data.wenjuan[i]==this.data.record[j]){
-    //       console.log('shanchu')
-    //       this.data.wenjuan.splice(i,1)
-    //       this.data.questions.splice(i,1)
-    //       this.data.kind.splice(i,1)
-    //       this.data.kinds.splice(i,1)
-    //       this.data.judgekind.splice(i,1)
-    //       this.data.judgetext.splice(i,1)
-    //       this.setData({
-    //         wenjuan:this.data.wenjuan,
-    //         questions:this.data.questions,
-    //         kind:this.data.kind,
-    //         kinds:this.data.kinds,
-    //         judgekind:this.data.judgekind,
-    //         judgetext:this.data.judgetext
-    //       })
-    //     }
-    //   }
-    // }
-  
+    }).then(res => {
+      console.log('云函数查询结果:', res)
+      if (res.result.success) {
+        // 初始化空数组，避免数组长度问题
+        this.setData({
+          record: [],
+          id: []
+        })
+        // 重新设置数据
+        for(var i=0;i<res.result.data.length;i++){
+          this.setData({
+            [`record[${i}]`]: res.result.data[i].问卷,
+            [`id[${i}]`]: res.result.data[i]._id
+          })
+        }
+      }
+    }).catch(err => {
+      console.error('云函数调用失败:', err)
+      // 降级使用本地查询
+      db.collection('record').where({
+        姓名:this.data.userInfo.name
+      }).limit(999).get().then(res=>{
+        console.log('降级查询结果:', res)
+        // 初始化空数组，避免数组长度问题
+        this.setData({
+          record: [],
+          id: []
+        })
+        // 重新设置数据
+        for(var i=0;i<res.data.length;i++){
+          this.setData({
+            [`record[${i}]`]: res.data[i].问卷,
+            [`id[${i}]`]: res.data[i]._id
+          })
+        }
+      })
     })
 },
  onShow(){
@@ -100,45 +106,52 @@ var user = wx.getStorageSync('user2')
         }
         
    
-    db.collection('record').where({
-      姓名:this.data.userInfo.name
-    }).get().then(res=>{
-      console.log('查询到的记录:', res.data)
-      // 初始化空数组，避免数组长度问题
-      this.setData({
-        record: [],
-        id: []
-      })
-      // 重新设置数据
-      for(var i=0;i<res.data.length;i++){
-        this.setData({
-          [`record[${i}]`]: res.data[i].问卷,
-          [`id[${i}]`]: res.data[i]._id
-        })
+    // 使用云函数获取所有记录，突破20条限制
+    wx.cloud.callFunction({
+      name: 'getAllRecords',
+      data: {
+        collection: 'record',
+        where: {
+          姓名: this.data.userInfo.name
+        }
       }
-      
-    //   for(var j=0;j<this.data.record.length;j++){
-    //   for(var i=0;i<this.data.wenjuan.length;i++){
-    //     if(this.data.wenjuan[i]==this.data.record[j]){
-    //       console.log('删除执行')
-    //       this.data.wenjuan.splice(i,1)
-    //       this.data.questions.splice(i,1)
-    //       this.data.kind.splice(i,1)
-    //       this.data.kinds.splice(i,1)
-    //       this.data.judgekind.splice(i,1)
-    //       this.data.judgetext.splice(i,1)
-    //       this.setData({
-    //         wenjuan:this.data.wenjuan,
-    //         questions:this.data.questions,
-    //         kind:this.data.kind,
-    //         kinds:this.data.kinds,
-    //         judgekind:this.data.judgekind,
-    //         judgetext:this.data.judgetext
-    //       })
-    //     }
-    //   }
-    // }
-  
+    }).then(res => {
+      console.log('云函数查询结果:', res)
+      if (res.result.success) {
+        console.log('查询到的记录:', res.result.data)
+        // 初始化空数组，避免数组长度问题
+        this.setData({
+          record: [],
+          id: []
+        })
+        // 重新设置数据
+        for(var i=0;i<res.result.data.length;i++){
+          this.setData({
+            [`record[${i}]`]: res.result.data[i].问卷,
+            [`id[${i}]`]: res.result.data[i]._id
+          })
+        }
+      }
+    }).catch(err => {
+      console.error('云函数调用失败:', err)
+      // 降级使用本地查询
+      db.collection('record').where({
+        姓名:this.data.userInfo.name
+      }).limit(999).get().then(res=>{
+        console.log('降级查询结果:', res.data)
+        // 初始化空数组，避免数组长度问题
+        this.setData({
+          record: [],
+          id: []
+        })
+        // 重新设置数据
+        for(var i=0;i<res.data.length;i++){
+          this.setData({
+            [`record[${i}]`]: res.data[i].问卷,
+            [`id[${i}]`]: res.data[i]._id
+          })
+        }
+      })
     })
 },
 delete(){

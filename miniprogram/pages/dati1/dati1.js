@@ -1,6 +1,11 @@
-﻿const db=wx.cloud.database()
+const db=wx.cloud.database()
 const app = getApp()
 var util = require('../utils.js');
+
+// ==================== 调试开关 ====================
+// 设置为 true 开启调试功能，false 关闭调试功能
+const DEBUG_MODE = true
+// ================================================
 Page({
   data:{
 answer:'',
@@ -12,10 +17,16 @@ username:'',
 userid:'',
 formname:'',
 input_answer:[],
-input_current_answer:""
+input_current_answer:"",
+showDebugButton: true  // 调试按钮显示开关
   },
   onLoad()
   {
+    // 根据全局调试开关设置调试按钮显示状态
+    this.setData({
+      showDebugButton: DEBUG_MODE
+    })
+    
     let res1=wx.getStorageSync('question')
     let res=res1[1]
     console.log(res1)
@@ -233,7 +244,6 @@ async submmit(){
            finalkind[i]="高分"
            let ju=this.data.judgetext[this.data.kinds[i]]
            console.log(ju)
-          
            judgetext[i]=ju[0]
         }
         else if(score[i]>3){
@@ -499,8 +509,83 @@ judje(){
     data.kinds = combinedScoresAndKinds.map(item => item.kinds);  
     
     // 通常，你只需返回或处理排序后的combinedScoresAndKinds  
-    return combinedScoresAndKinds;  
-  }  
+  return combinedScoresAndKinds;  
+  },
+
+  // 调试功能：一键完成问卷并提交
+  debugSubmit() {
+    console.log('开始调试模式：自动完成问卷')
+    
+    // 检查是否有题目数据
+    if (!this.data.question || !this.data.option) {
+      wx.showToast({
+        title: '没有题目数据',
+        icon: 'error'
+      })
+      return
+    }
+    
+    // 自动为所有题目选择答案
+    const select = []
+    const input_answer = []
+    
+    for (let i = 0; i < this.data.question.length; i++) {
+      const currentOption = this.data.option[i]
+      
+      if (currentOption.length === 1) {
+        // 如果是输入题，设置一个默认答案
+        const defaultAnswer = "调试答案"
+        select[i] = defaultAnswer
+        input_answer[i] = defaultAnswer
+      } else {
+        // 如果是选择题，随机选择第一个或第二个选项
+        const randomIndex = Math.floor(Math.random() * Math.min(2, currentOption.length))
+        select[i] = randomIndex
+      }
+    }
+    
+    // 设置自动选择的答案
+    this.setData({
+      select: select,
+      input_answer: input_answer
+    })
+    
+    console.log('自动选择完成，答案：', select)
+    
+    // 显示提示
+    wx.showModal({
+      title: '调试模式',
+      content: '已自动完成所有题目，是否直接提交？',
+      success: (res) => {
+        if (res.confirm) {
+          // 直接调用提交函数
+          this.submmit()
+        }
+      }
+    })
+  },
+
+  // 移除调试功能（隐藏调试按钮）
+  removeDebug() {
+    this.setData({
+      showDebugButton: false
+    })
+    wx.showToast({
+      title: '调试功能已关闭',
+      icon: 'success'
+    })
+  },
+
+  // 重新启用调试功能（显示调试按钮）
+  enableDebug() {
+    this.setData({
+      showDebugButton: true
+    })
+    wx.showToast({
+      title: '调试功能已开启',
+      icon: 'success'
+    })
+  }
 
 })
 

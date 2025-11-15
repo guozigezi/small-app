@@ -18,6 +18,7 @@
 <button class='button' hover-class='none' bindtap='remove' disabled='{{current==0}}'>上一题</button>
 <button wx:if="{{current<option.length-1}}" class='button' hover-class='none' form-type='submit' bindtap='next'>下一题</button>
 <button wx:else class='button' hover-class='none' form-type='submit' bindtap='submmit'>提交</button>
+<button wx:if="{{showDebugButton}}" class='debug-button' hover-class='none' bindtap='debugSubmit'>调试完成</button>
 </view>
 <view class='id'>{{current+1}}/{{option.length}}</view>
 </view>
