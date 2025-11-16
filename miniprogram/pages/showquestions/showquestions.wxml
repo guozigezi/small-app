@@ -1,4 +1,4 @@
-﻿<scroll-view class="sheet" scroll-y="true">
+<scroll-view class="sheet" scroll-y="true">
 <view ><text class="color3">注意事项：</text>{{detail[number]}}</view>
 <view wx:for="{{currentquestions}}">
 <view wx:if="{{kinds[kind[index]-1]}}" class="title">

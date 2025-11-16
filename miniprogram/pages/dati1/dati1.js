@@ -4,7 +4,7 @@ var util = require('../utils.js');
 
 // ==================== 调试开关 ====================
 // 设置为 true 开启调试功能，false 关闭调试功能
-const DEBUG_MODE = true
+const DEBUG_MODE = false
 // ================================================
 Page({
   data:{
@@ -66,8 +66,9 @@ showDebugButton: true  // 调试按钮显示开关
   {
           let item=this.data.currentoption[i]
           var oncurrentoption0='currentoption0['+i+']'
+          const label=this.formatOptionLabel(item,i)
           this.setData({
-            [oncurrentoption0]:item[0]
+            [oncurrentoption0]:label
           })
   }
   },
@@ -115,8 +116,9 @@ this.setData({show:this.data.select[this.data.current]})
   {
           let item=this.data.currentoption[i]
           var oncurrentoption0='currentoption0['+i+']'
+          const label=this.formatOptionLabel(item,i)
           this.setData({
-            [oncurrentoption0]:item[0]
+            [oncurrentoption0]:label
           })
   }
   this.judje()
@@ -143,8 +145,9 @@ this.setData({show:this.data.select[this.data.current]})
     {
             let item=this.data.currentoption[i]
             var oncurrentoption0='currentoption0['+i+']'
+            const label=this.formatOptionLabel(item,i)
             this.setData({
-              [oncurrentoption0]:item[0],
+              [oncurrentoption0]:label,
             })
     }
     this.judje()
@@ -488,6 +491,20 @@ judje(){
     this.setData({
       input_current_answer:this.data.select[this.data.current]
     })
+  },
+  formatOptionLabel(item,index){
+    if(!item){
+      return ''
+    }
+    const text=item[0]
+    // 如果文本已经以大写字母开头，直接返回
+    if(typeof text === 'string' && /^[A-Z]/.test(text)){
+      return text
+    }
+    // 否则按顺序为选项添加字母前缀
+    const letterIndex = index % 26
+    const prefix = String.fromCharCode(65 + letterIndex)
+    return `${prefix}.${text}`
   },
  sortScoresAndKinds(data) {  
     // 假设scores和kinds是等长的，并且它们之间的索引对应关系是正确的  
